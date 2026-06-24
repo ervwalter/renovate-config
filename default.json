@@ -11,6 +11,7 @@
   "schedule": ["after 6am and before 9am"],
   "minimumReleaseAge": "5 days",
   "osvVulnerabilityAlerts": true,
+  "dependencyDashboardOSVVulnerabilitySummary": "all",
   "labels": ["dependencies"],
   "assignees": ["ervwalter"],
   "packageRules": [
