@@ -13,6 +13,12 @@
       "matchCategories": ["security"],
       "addLabels": ["automerge"],
       "assignees": []
+    },
+    {
+      "description": "Lock file maintenance: auto-merge via label, no assignee",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "addLabels": ["automerge"],
+      "assignees": []
     }
   ]
 }
