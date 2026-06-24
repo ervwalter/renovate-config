@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    ":semanticCommits",
+    ":dependencyDashboard"
+  ],
+  "timezone": "America/Chicago",
+  "schedule": ["after 6am and before 9am"],
+  "minimumReleaseAge": "5 days",
+  "osvVulnerabilityAlerts": true,
+  "labels": ["dependencies"],
+  "assignees": ["ervwalter"],
+  "packageRules": [
+    {
+      "description": "Batch all non-major updates into one PR",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "groupName": "all non-major dependencies"
+    },
+    {
+      "description": "Fast-track security fixes with a short 12h cooldown",
+      "matchCategories": ["security"],
+      "minimumReleaseAge": "12 hours"
+    }
+  ]
+}

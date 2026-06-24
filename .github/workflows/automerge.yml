@@ -1,0 +1,30 @@
+name: automerge (reusable)
+
+# Reusable auto-merge workflow for Renovate PRs across ervwalter repos.
+# Called by each auto-merge repo's thin caller workflow. Enables GitHub
+# auto-merge (squash) on a Renovate PR once its required checks pass.
+#
+# Security: 3-layer gate — (1) PR head is this same repo (no fork PRs),
+# (2) author is the unforgeable renovate[bot] identity, (3) the 'automerge'
+# label, which only write-holders / Renovate can apply. Callers trigger on
+# `pull_request` (not pull_request_target) and no PR code is checked out or
+# executed, so fork PRs get a read-only token and the RCE class doesn't apply.
+
+on:
+  workflow_call:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    if: >
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login == 'renovate[bot]' &&
+      contains(github.event.pull_request.labels.*.name, 'automerge')
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh pr merge --auto --squash "${{ github.event.pull_request.html_url }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

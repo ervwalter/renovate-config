@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>ervwalter/renovate-config:default"],
+  "packageRules": [
+    {
+      "description": "Non-major: auto-merge via label, no assignee (avoid notification spam)",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "addLabels": ["automerge"],
+      "assignees": []
+    },
+    {
+      "description": "Security: same fast-track + auto-merge, no assignee",
+      "matchCategories": ["security"],
+      "addLabels": ["automerge"],
+      "assignees": []
+    }
+  ]
+}
