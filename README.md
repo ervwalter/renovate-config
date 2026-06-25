@@ -40,8 +40,9 @@ Use this for repos that should review/merge dependency PRs by hand (e.g. trendwe
 
 Extends `:default` and adds the `automerge` label to non-major and security
 updates (which the auto-merge workflow acts on), and removes the assignee from
-exactly those auto-merged PRs to avoid notification spam. **Major updates are
-not labeled** — they stay assigned to `ervwalter` for manual review.
+exactly those auto-merged PRs to avoid notification spam. It also auto-merges
+**major GitHub Actions updates only**. Other major updates are not labeled, so
+they stay assigned to `ervwalter` for manual review.
 
 Repos using this preset must also add the caller workflow below and have a
 required status check + `allow_auto_merge` + squash enabled.

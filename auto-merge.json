@@ -3,6 +3,13 @@
   "extends": ["local>ervwalter/renovate-config:default"],
   "packageRules": [
     {
+      "description": "GitHub Actions major updates: auto-merge via label, no assignee",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["automerge"],
+      "assignees": []
+    },
+    {
       "description": "Non-major: auto-merge via label, no assignee (avoid notification spam)",
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "addLabels": ["automerge"],
