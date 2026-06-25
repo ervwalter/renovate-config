@@ -24,6 +24,7 @@ so it gets noticed and merged manually. Includes:
 - Digest pinning for Docker images and GitHub Actions (supply-chain hygiene)
 - 5-day minimum release age (supply-chain cooldown); security fixes fast-tracked to 12h
 - OSV vulnerability alerts
+- Major updates batched into one PR per dependency manager, separate from the non-major batch
 - All non-major updates batched into a single PR
 
 Use this for repos that should review/merge dependency PRs by hand (e.g. trendweight).

@@ -16,6 +16,12 @@
   "assignees": ["ervwalter"],
   "packageRules": [
     {
+      "description": "Batch major updates into one PR per dependency manager",
+      "matchUpdateTypes": ["major"],
+      "groupName": "{{manager}} major dependencies",
+      "groupSlug": "{{manager}}-major-dependencies"
+    },
+    {
       "description": "Batch all non-major updates into one PR",
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "groupName": "all non-major dependencies"
